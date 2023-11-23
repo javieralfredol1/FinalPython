@@ -1,6 +1,10 @@
 dash
 plotly.express
 pandas
+numpy
 dash_bootstrap_components
+yfinance
+datetime
+pyfolio
 gunicorn
-openpyxl
+PyPortfolioOpt
