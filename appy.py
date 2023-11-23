@@ -54,12 +54,12 @@ RetornosP = pd.concat([ColumnaPesos, ColumnaSharpe, ColumnaVolatilidad], axis=1)
 
 RetornosP.reset_index(inplace=True)
 
-app2 = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
-server = app2.server
+app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
+server = app.server
 
-app2.title = "Dashboard"
+app.title = "Dashboard"
 
-app2.layout = html.Div([
+app.layout = html.Div([
     # dropdown checklist
     html.Div(dcc.Dropdown(
         id="empresas", value=["KO", "PG", "CAT", "PM", "MDLZ"], clearable=False, multi=True,
@@ -91,7 +91,7 @@ app2.layout = html.Div([
     dcc.Graph(id="GPVolatilidad"),
 ])
 
-@app2.callback([Output("linechart", "figure"),
+@app.callback([Output("linechart", "figure"),
                Output("Comparación", 'figure'),
                Output("GPSharpe", 'figure'),
                Output("GPVolatilidad", 'figure')],
@@ -124,4 +124,4 @@ def update_linechart(selected_empresas, selected_cuenta, selected_fechas):
     return fig, Comparación, GPSharpe, GPVolatilidad
 
 if __name__ == '__main__':
-    app2.run_server(debug=False,host="0.0.0.0",port=15000)
+    app.run_server(debug=False,host="0.0.0.0",port=15000)
